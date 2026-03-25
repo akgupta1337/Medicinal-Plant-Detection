@@ -6,8 +6,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, random_split
 from torchvision import datasets, models, transforms
 
-# --- Config (change these values directly if you want) ---
-DATA_DIR = "dataset"  # root folder (should contain train/ and optionally val/)
+DATA_DIR = "dataset"
 MODEL_PATH = "model/medicinal_plant_classifier.pth"
 EPOCHS = 5
 BATCH_SIZE = 32
@@ -20,7 +19,6 @@ def main():
     print("Using device:", device)
 
     # --- Data preparation ---
-    # We assume images are organized as: dataset/train/<class>/*.jpg
     train_dir = f"{DATA_DIR}/train"
     val_dir = f"{DATA_DIR}/val"
 

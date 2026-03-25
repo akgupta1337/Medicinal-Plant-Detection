@@ -56,20 +56,3 @@ def predict_from_bytes(model, class_names, device, image_bytes: bytes):
         conf, idx = torch.max(probs, dim=0)
 
     return class_names[idx.item()], float(conf.item())
-
-
-if __name__ == "__main__":
-    # Example usage:
-    # python inference.py path/to/image.jpg
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Usage: python inference.py <image_path>")
-        sys.exit(1)
-
-    model, classes, device = load_model()
-    with open(sys.argv[1], "rb") as f:
-        image_bytes = f.read()
-
-    label, confidence = predict_from_bytes(model, classes, device, image_bytes)
-    print(f"Predicted: {label} ({confidence:.3f})")
